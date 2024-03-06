@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBtn from './SearchButton';
 import styled from 'styled-components';
+import SearchBox from './SearchBox';
 
 const HeaderContainer = styled.div`
 	display: flex;
@@ -15,15 +16,20 @@ const HeaderContainer = styled.div`
 `;
 
 const H1 = styled.h1`
-	font-size: 1.5rem;
+	font-size: 1.6rem;
 	font-weight: bold;
 	margin-left: 10px;
+
+	@media (max-width: 430px) {
+		display: none;
+	}
 `;
 
 export default function Header() {
 	return (
 		<HeaderContainer>
 			<H1>SkyForecast</H1>
+			<SearchBox />
 			<SearchBtn />
 		</HeaderContainer>
 	);
