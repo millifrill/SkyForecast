@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import './App.css';
 import Header from './components/Header';
 
@@ -26,22 +27,24 @@ export default function App() {
 	return (
 		<>
 			<Header setSearch={setSearch} search={search} searchPressed={searchPressed} />
-			<div>
-				<p>{weather.name}</p>
-				<p>{weather.weather && weather.weather[0].main}</p>
-				<p>{weather.main && weather.main.temp} °C</p>
-				<p>{weather.wind && weather.wind.speed} m/s</p>
-			</div>
+			<Container>
+				<Span>{weather.name}</Span>
+				<Span>{weather.weather && weather.weather[0].main}</Span>
+				<Span>{weather.main && weather.main.temp} °C</Span>
+				<Span>{weather.wind && weather.wind.speed} m/s</Span>
+			</Container>
 		</>
 	);
 }
 
-const H1 = styled.h1`
-	font-size: 1.6rem;
-	font-weight: bold;
-	margin-left: 10px;
+const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+`;
 
-	@media (max-width: 430px) {
-		display: none;
-	}
+const Span = styled.span`
+	font-size: 1.6rem;
+	font-weight: 400;
+	margin-left: 10px;
 `;
