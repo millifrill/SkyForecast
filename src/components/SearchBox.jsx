@@ -14,9 +14,9 @@ export default function SearchBox({ setSearch, inputRef }) {
 
 const StyledSearchBox = styled.input`
 	align-self: center;
-	padding: 5px 6px 1px 6px;
+	outline-style: none;
+	padding: 5px 5px 5px 10px;
 	font-size: 1rem;
-	outline: none;
 	height: 28px;
 	width: 80%;
 	border-radius: 8px;

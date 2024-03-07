@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
+import WeatherContainer from './components/WeatherContainer';
 
 const api = {
 	key: '6693a0bd2ceaf6280a39581ee88730dd',
@@ -30,10 +30,15 @@ export default function App() {
 				inputRef.current.focus();
 			})
 			.catch((error) => {
-				console.error('Error fetching weather data:', error.message);
+				setFetchDone(false);
 				setError(error.message);
 			});
 	};
+
+	const city = weather.name;
+	const sky = weather.weather && weather.weather[0].main;
+	const temp = weather.main && weather.main.temp.toFixed(1);
+	const wind = weather.wind && weather.wind.speed;
 
 	return (
 		<>
@@ -43,36 +48,14 @@ export default function App() {
 				searchPressed={searchPressed}
 				inputRef={inputRef}
 			/>
-			<Container>
-				{fetchDone ? (
-					<>
-						<Span>{weather.name}</Span>
-						<Span>{weather.weather && weather.weather[0].main}</Span>
-						<Span>{weather.main && weather.main.temp.toFixed(1)} °C</Span>
-						<Span>{weather.wind && weather.wind.speed} m/s</Span>
-					</>
-				) : (
-					<WelcomeText>
-						{error || 'Please search for a location to display weather information.'}
-					</WelcomeText>
-				)}
-			</Container>
+			<WeatherContainer
+				fetchDone={fetchDone}
+				error={error}
+				city={city}
+				sky={sky}
+				temp={temp}
+				wind={wind}
+			/>
 		</>
 	);
 }
-
-const Container = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-`;
-
-const Span = styled.span`
-	font-size: 1.6rem;
-	font-weight: 300;
-`;
-
-const WelcomeText = styled.p`
-	font-size: 1.6rem;
-	font-weight: 400;
-`;
