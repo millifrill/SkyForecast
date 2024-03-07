@@ -3,11 +3,11 @@ import SearchBtn from './SearchButton';
 import styled from 'styled-components';
 import SearchBox from './SearchBox';
 
-export default function Header({ search, setSearch, searchPressed }) {
+export default function Header({ search, setSearch, searchPressed, inputRef }) {
 	return (
 		<HeaderContainer>
 			<H1>SkyForecast</H1>
-			<SearchBox setSearch={setSearch} />
+			<SearchBox setSearch={setSearch} inputRef={inputRef} />
 			<SearchBtn search={search} searchPressed={searchPressed} />
 		</HeaderContainer>
 	);

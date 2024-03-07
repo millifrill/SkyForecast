@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import './App.css';
 import Header from './components/Header';
@@ -12,23 +12,37 @@ export default function App() {
 	const [search, setSearch] = useState('');
 	const [weather, setWeather] = useState({});
 	const [fetchDone, setFetchDone] = useState(false);
+	const [error, setError] = useState(null);
+	const inputRef = useRef();
 
 	const searchPressed = () => {
 		fetch(`${api.base}weather?q=${search}&appid=${api.key}&units=metric`)
-			.then((response) => response.json())
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error('Location not found. Please check the spelling and try again.');
+				}
+				return response.json();
+			})
 			.then((data) => {
 				console.log(data);
 				setWeather(data);
 				setFetchDone(true);
+				inputRef.current.focus();
 			})
 			.catch((error) => {
-				console.error('Error fetching weather data:', error);
+				console.error('Error fetching weather data:', error.message);
+				setError(error.message);
 			});
 	};
 
 	return (
 		<>
-			<Header setSearch={setSearch} search={search} searchPressed={searchPressed} />
+			<Header
+				setSearch={setSearch}
+				search={search}
+				searchPressed={searchPressed}
+				inputRef={inputRef}
+			/>
 			<Container>
 				{fetchDone ? (
 					<>
@@ -39,7 +53,7 @@ export default function App() {
 					</>
 				) : (
 					<WelcomeText>
-						Please search for a location to display weather information.
+						{error || 'Please search for a location to display weather information.'}
 					</WelcomeText>
 				)}
 			</Container>

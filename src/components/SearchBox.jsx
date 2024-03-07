@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function SearchBox({ setSearch }) {
+export default function SearchBox({ setSearch, inputRef }) {
 	return (
 		<StyledSearchBox
 			type='text'
 			placeholder='Enter city/town...'
 			onChange={(e) => setSearch(e.target.value)}
+			ref={inputRef}
 		/>
 	);
 }
