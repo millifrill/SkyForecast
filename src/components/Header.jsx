@@ -3,6 +3,16 @@ import SearchBtn from './SearchButton';
 import styled from 'styled-components';
 import SearchBox from './SearchBox';
 
+export default function Header({ search, setSearch, searchPressed }) {
+	return (
+		<HeaderContainer>
+			<H1>SkyForecast</H1>
+			<SearchBox setSearch={setSearch} />
+			<SearchBtn search={search} searchPressed={searchPressed} />
+		</HeaderContainer>
+	);
+}
+
 const HeaderContainer = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -24,13 +34,3 @@ const H1 = styled.h1`
 		display: none;
 	}
 `;
-
-export default function Header() {
-	return (
-		<HeaderContainer>
-			<H1>SkyForecast</H1>
-			<SearchBox />
-			<SearchBtn />
-		</HeaderContainer>
-	);
-}
