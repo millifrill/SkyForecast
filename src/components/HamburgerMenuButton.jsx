@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { IoSearchSharp } from 'react-icons/io5';
+import { RxHamburgerMenu } from 'react-icons/rx';
 
-export default function SearchButton({ searchPressed }) {
+export default function HamburgerMenuButton({ searchPressed }) {
 	return (
-		<SearchBtn onClick={searchPressed}>
-			<IoSearchSharp />
-		</SearchBtn>
+		<HamburgerMenuBtn onClick={searchPressed}>
+			<RxHamburgerMenu />
+		</HamburgerMenuBtn>
 	);
 }
 
-const SearchBtn = styled.button`
+const HamburgerMenuBtn = styled.button`
 	background-color: #2369eb;
 	align-self: center;
 	padding: 4px 5px 0px 5px;

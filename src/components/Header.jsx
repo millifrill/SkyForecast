@@ -2,10 +2,12 @@ import React from 'react';
 import SearchBtn from './SearchButton';
 import styled from 'styled-components';
 import SearchBox from './SearchBox';
+import HamburgerMenuButton from './HamburgerMenuButton';
 
 export default function Header({ search, setSearch, searchPressed, inputRef }) {
 	return (
 		<HeaderContainer>
+			<HamburgerMenuButton />
 			<H1>SkyForecast</H1>
 			<SearchBox setSearch={setSearch} inputRef={inputRef} />
 			<SearchBtn search={search} searchPressed={searchPressed} />
