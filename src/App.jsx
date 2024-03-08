@@ -6,6 +6,7 @@ import WeatherContainer from './components/WeatherContainer';
 const api = {
 	key: '6693a0bd2ceaf6280a39581ee88730dd',
 	base: 'https://api.openweathermap.org/data/2.5/',
+	iconBase: 'http://openweathermap.org/img/wn/',
 };
 
 export default function App() {
@@ -24,7 +25,7 @@ export default function App() {
 				return response.json();
 			})
 			.then((data) => {
-				console.log(data);
+				console.log(data); // GLÖM INTE ATT TA BORT
 				setWeather(data);
 				setFetchDone(true);
 				inputRef.current.focus();
@@ -35,6 +36,7 @@ export default function App() {
 			});
 	};
 
+	const iconUrl = `${api.iconBase}${weather.weather && weather.weather[0].icon}@2x.png`;
 	const city = weather.name;
 	const sky = weather.weather && weather.weather[0].main;
 	const temp = weather.main && weather.main.temp.toFixed(1);
@@ -51,6 +53,7 @@ export default function App() {
 			<WeatherContainer
 				fetchDone={fetchDone}
 				error={error}
+				iconUrl={iconUrl}
 				city={city}
 				sky={sky}
 				temp={temp}

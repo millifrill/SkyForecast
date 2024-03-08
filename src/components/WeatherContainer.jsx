@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function WeatherContainer({ fetchDone, error, city, sky, temp, wind }) {
+export default function WeatherContainer({ fetchDone, error, iconUrl, city, sky, temp, wind }) {
 	return (
 		<Container>
 			{fetchDone ? (
 				<>
-					<Span>{city}</Span>
+					<H1>{city}</H1>
+					<Icon src={iconUrl} alt='Weather Icon' />
 					<Span>{sky}</Span>
 					<Span>{temp} °C</Span>
 					<Span>{wind} m/s</Span>
@@ -24,6 +25,17 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+`;
+
+const H1 = styled.h1`
+	font-size: 3rem;
+	font-weight: bold;
+`;
+
+const Icon = styled.img`
+	margin: auto;
+	width: 100px;
+	height: 100px;
 `;
 
 const Span = styled.span`
