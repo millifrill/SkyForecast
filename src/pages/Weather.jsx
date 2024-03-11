@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function WeatherContainer({ fetchDone, error, iconUrl, city, sky, temp, wind }) {
+export default function Weather({ fetchDone, error, iconUrl, city, sky, temp, wind }) {
 	return (
 		<Container>
 			{fetchDone ? (
@@ -44,6 +44,6 @@ const Span = styled.span`
 `;
 
 const WelcomeText = styled.p`
-	font-size: 1.6rem;
+	font-size: 1.5rem;
 	font-weight: 400;
 `;
