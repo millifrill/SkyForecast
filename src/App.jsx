@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import Weather from './pages/Weather';
+import About from './pages/About';
 import Header from './components/Header';
-import WeatherContainer from './components/WeatherContainer';
 
 const api = {
 	key: '6693a0bd2ceaf6280a39581ee88730dd',
@@ -43,22 +45,29 @@ export default function App() {
 	const wind = weather.wind && weather.wind.speed;
 
 	return (
-		<>
-			<Header
-				setSearch={setSearch}
-				search={search}
-				searchPressed={searchPressed}
-				inputRef={inputRef}
-			/>
-			<WeatherContainer
-				fetchDone={fetchDone}
-				error={error}
-				iconUrl={iconUrl}
-				city={city}
-				sky={sky}
-				temp={temp}
-				wind={wind}
-			/>
-		</>
+		<Router>
+			<Header />
+			<Routes>
+				<Route
+					path='/'
+					element={
+						<Weather
+							setSearch={setSearch}
+							search={search}
+							searchPressed={searchPressed}
+							inputRef={inputRef}
+							fetchDone={fetchDone}
+							error={error}
+							iconUrl={iconUrl}
+							city={city}
+							sky={sky}
+							temp={temp}
+							wind={wind}
+						/>
+					}
+				/>
+				<Route path='/about' element={<About />} />
+			</Routes>
+		</Router>
 	);
 }

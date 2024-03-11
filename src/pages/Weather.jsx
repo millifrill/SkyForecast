@@ -1,9 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
+import SearchBox from './../components/SearchBox';
+import SearchButton from './../components/SearchButton';
 
-export default function Weather({ fetchDone, error, iconUrl, city, sky, temp, wind }) {
+export default function Weather({
+	search,
+	setSearch,
+	searchPressed,
+	inputRef,
+	fetchDone,
+	error,
+	iconUrl,
+	city,
+	sky,
+	temp,
+	wind,
+}) {
 	return (
 		<Container>
+			<SearchContainer>
+				<SearchBox setSearch={setSearch} inputRef={inputRef} />
+				<SearchButton search={search} searchPressed={searchPressed} />
+			</SearchContainer>
 			{fetchDone ? (
 				<>
 					<H1>{city}</H1>
@@ -24,7 +42,16 @@ export default function Weather({ fetchDone, error, iconUrl, city, sky, temp, wi
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
+	align-content: flex-start;
+	max-width: 600px;
 	gap: 20px;
+`;
+
+const SearchContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+	width: 100%;
 `;
 
 const H1 = styled.h1`
