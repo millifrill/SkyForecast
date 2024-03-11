@@ -25,7 +25,7 @@ const StyledSearchBox = styled.input`
 	outline-style: none;
 	padding: 5px 5px 5px 10px;
 	font-size: 1rem;
-	height: 28px;
+	height: 26px;
 	width: 100%;
 	border-radius: 8px;
 `;
