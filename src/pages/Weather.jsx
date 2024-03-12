@@ -57,7 +57,7 @@ const SearchContainer = styled.div`
 `;
 
 const H1 = styled.h1`
-	font-size: 3rem;
+	font-size: 2rem;
 	font-weight: bold;
 `;
 
