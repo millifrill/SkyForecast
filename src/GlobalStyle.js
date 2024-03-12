@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     place-items: center;

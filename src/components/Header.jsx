@@ -20,7 +20,7 @@ const HeaderContainer = styled.div`
 	left: 0;
 	right: 0;
 	padding: 10px;
-	background-color: #000;
+	background-color: #181818;
 `;
 
 const H1 = styled.h1`

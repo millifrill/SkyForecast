@@ -19,7 +19,7 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	max-width: 600px;
-	margin: 80px auto;
+	margin: 60px auto;
 	gap: 10px;
 `;
 

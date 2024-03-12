@@ -10,6 +10,10 @@ export default function NavMenu() {
 		setMenuOpen(!menuOpen);
 	};
 
+	const closeMenu = () => {
+		setMenuOpen(false);
+	};
+
 	return (
 		<>
 			<HamburgerWrapper>
@@ -20,10 +24,14 @@ export default function NavMenu() {
 					<NavLink>Theme</NavLink>
 				</NavItem>
 				<NavItem>
-					<NavLink to='/'>Weather</NavLink>
+					<NavLink to='/' onClick={closeMenu}>
+						Weather
+					</NavLink>
 				</NavItem>
 				<NavItem>
-					<NavLink to='/about'>About</NavLink>
+					<NavLink to='/about' onClick={closeMenu}>
+						About
+					</NavLink>
 				</NavItem>
 			</NavMenuContainer>
 		</>
@@ -39,7 +47,7 @@ const HamburgerWrapper = styled.div`
 const NavMenuContainer = styled.nav`
 	display: ${(props) => (props.open ? 'flex' : 'none')};
 	flex-direction: column;
-	background-color: #000;
+	background-color: #181818;
 	position: absolute;
 	top: 60px;
 	left: 0px;
