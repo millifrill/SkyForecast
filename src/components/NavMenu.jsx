@@ -21,9 +21,6 @@ export default function NavMenu() {
 			</HamburgerWrapper>
 			<NavMenuContainer open={menuOpen}>
 				<NavItem>
-					<NavLink>Theme</NavLink>
-				</NavItem>
-				<NavItem>
 					<NavLink to='/' onClick={closeMenu}>
 						Weather
 					</NavLink>
@@ -57,7 +54,7 @@ const NavMenuContainer = styled.nav`
 	width: 200px;
 	height: 100vh;
 	padding: 20px;
-	background-color: #181818;
+	background-color: #181818; //242424
 	z-index: 1;
 `;
 
