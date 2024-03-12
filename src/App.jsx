@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import Weather from './pages/Weather';
@@ -31,12 +31,21 @@ export default function App() {
 				setWeather(data);
 				setFetchDone(true);
 				inputRef.current.focus();
+				localStorage.setItem('WEATHER_DATA', JSON.stringify(data));
 			})
 			.catch((error) => {
 				setFetchDone(false);
 				setError(error.message);
 			});
 	};
+
+	useEffect(() => {
+		const savedWeatherData = localStorage.getItem('WEATHER_DATA');
+		if (savedWeatherData) {
+			setWeather(JSON.parse(savedWeatherData));
+			setFetchDone(true);
+		}
+	}, []);
 
 	const iconUrl = `${api.iconBase}${weather.weather && weather.weather[0].icon}@2x.png`;
 	const city = weather.name;
