@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import NavMenu from './NavMenu';
-import ToggleButton from './Switch';
+import Switch from './Switch';
 
 export default function Header() {
 	return (
@@ -11,7 +11,7 @@ export default function Header() {
 				<H1>SkyForecast</H1>
 			</Div>
 			<Div>
-				<ToggleButton />
+				<Switch />
 			</Div>
 		</HeaderContainer>
 	);
