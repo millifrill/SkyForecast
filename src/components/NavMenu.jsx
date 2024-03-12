@@ -45,15 +45,19 @@ const HamburgerWrapper = styled.div`
 `;
 
 const NavMenuContainer = styled.nav`
-	display: ${(props) => (props.open ? 'flex' : 'none')};
-	flex-direction: column;
-	background-color: #181818;
+	visibility: ${(props) => (props.open ? 'visible' : 'hidden')};
+	opacity: ${(props) => (props.open ? 1 : 0)};
+	overflow: hidden;
+	transition: max-height 0.3s ease, opacity 0.2s ease, visibility 0.3s ease,
+		transform 0.3s ease-in-out;
+	transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
 	position: absolute;
 	top: 60px;
-	left: 0px;
+	left: 0;
 	width: 200px;
 	height: 100vh;
 	padding: 20px;
+	background-color: #181818;
 	z-index: 1;
 `;
 
