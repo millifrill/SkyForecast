@@ -50,9 +50,8 @@ const NavMenuContainer = styled.nav`
 `;
 
 const NavItem = styled.div`
-	margin-left: 50px;
+	margin: 25px 0 0 50px;
 	align-self: flex-start;
-	gap: 10px;
 `;
 
 const NavLink = styled(Link)`
@@ -60,6 +59,7 @@ const NavLink = styled(Link)`
 	color: white;
 	cursor: pointer;
 	font-size: 1.2rem;
+	margin-top: 50px;
 
 	&:hover {
 		text-decoration: underline;

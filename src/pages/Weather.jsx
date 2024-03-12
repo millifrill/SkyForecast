@@ -42,14 +42,16 @@ export default function Weather({
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-content: flex-start;
+	align-items: center;
 	max-width: 600px;
+	margin: 80px auto;
 	gap: 20px;
 `;
 
 const SearchContainer = styled.div`
 	display: flex;
 	flex-direction: row;
+	align-items: flex-start;
 	gap: 10px;
 	width: 100%;
 `;
@@ -71,6 +73,6 @@ const Span = styled.span`
 `;
 
 const WelcomeText = styled.p`
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	font-weight: 400;
 `;
