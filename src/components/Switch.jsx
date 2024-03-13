@@ -43,7 +43,7 @@ const SwitchSlider = styled.span`
 	top: 1px;
 	left: 1px;
 	width: 38px;
-	height: 38px;
+	height: 37px;
 	font-size: 1.6rem;
 	text-align: center;
 	align-items: center;

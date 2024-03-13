@@ -49,7 +49,7 @@ const Container = styled.div`
 	flex-direction: column;
 	min-width: 300px;
 	max-width: 500px;
-	margin: 80px auto 30px;
+	margin: 70px auto 30px;
 	border-radius: 8px;
 `;
 

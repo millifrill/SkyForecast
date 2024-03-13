@@ -23,7 +23,7 @@ const Container = styled.div`
 	flex-direction: column;
 	min-width: 300px;
 	max-width: 500px;
-	margin: 50px auto 30px;
+	margin: 40px auto 30px;
 	border-radius: 8px;
 	padding: 20px;
 	background-color: ${(props) => props.theme.backgroundColor};
