@@ -25,8 +25,7 @@ const SwitchLabel = styled.label`
 	justify-content: space-between;
 	position: relative;
 	width: 60px;
-	height: 39.5px;
-	margin-right: 5px;
+	height: 40px;
 	border-radius: 8px;
 	border: 2px solid #2369eb;
 	transition: background-color 0.3s;
@@ -41,17 +40,20 @@ const SwitchInput = styled.input`
 
 const SwitchSlider = styled.span`
 	position: absolute;
-	top: 2px;
+	top: 1px;
 	left: 1px;
-	width: 36px;
-	height: 36px;
+	width: 38px;
+	height: 38px;
 	font-size: 1.6rem;
 	text-align: center;
 	align-items: center;
 	justify-content: center;
+	padding: 1px 1px 0px 1px;
 	border-radius: 6px;
 	transition: 0.2s;
 	background: #2369eb;
+	color: white;
+
 	${SwitchInput}:checked + & {
 		left: calc(100% - 1px);
 		transform: translateX(-100%);

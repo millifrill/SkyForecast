@@ -14,8 +14,8 @@ const HamburgerMenuBtn = styled.button`
 	background-color: #2369eb;
 	padding: 4px 6px 0px 6px;
 	margin-top: 2px;
-	width: 39.5px;
-	height: 39.5px;
+	width: 40px;
+	height: 40px;
 	font-size: 1.5rem;
 	outline: none;
 	&:focus {

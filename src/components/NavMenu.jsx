@@ -51,7 +51,8 @@ const NavMenuContainer = styled.nav`
 		transform 0.3s ease-in-out;
 	transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
 	position: absolute;
-	top: 62px;
+	align-self: flex-end;
+	top: 63px;
 	left: 0;
 	width: 200px;
 	height: 100vh;

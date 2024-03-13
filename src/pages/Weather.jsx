@@ -20,8 +20,7 @@ export default function Weather({
 	const { theme } = useContext(ThemeContext);
 
 	return (
-		// <Container1 theme={theme}>
-		<Container>
+		<Container theme={theme}>
 			<SearchContainer>
 				<SearchBox setSearch={setSearch} inputRef={inputRef} />
 				<SearchButton search={search} searchPressed={searchPressed} />
@@ -42,27 +41,16 @@ export default function Weather({
 				</WelcomeOrErrorContainer>
 			)}
 		</Container>
-		// </Container1>
 	);
 }
-
-// const Container1 = styled.div`
-// 	display: flex;
-// 	flex-direction: column;
-// 	align-items: center;
-// 	width: 100vh;
-// 	height: 100vh;
-// 	background-color: ${(props) => props.theme.backgroundColor};
-// `;
 
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	min-width: 350px;
-	max-width: 600px;
-	margin: 60px auto 30px;
-	background-color: ${(props) => props.theme.backgroundColor};
+	min-width: 300px;
+	max-width: 500px;
+	margin: 80px auto 30px;
+	border-radius: 8px;
 `;
 
 const WeatherdataContainer = styled.div`
@@ -71,8 +59,7 @@ const WeatherdataContainer = styled.div`
 	align-items: center;
 	min-width: 350px;
 	max-width: 600px;
-	padding-bottom: 10px;
-	/* padding: 0px 80px 40px 80px; */
+	padding: 50px 5px;
 	border-radius: 8px;
 	background-color: ${(props) => props.theme.backgroundColor};
 `;
@@ -80,9 +67,9 @@ const WeatherdataContainer = styled.div`
 const SearchContainer = styled.div`
 	display: flex;
 	flex-direction: row;
-	gap: 5px;
+	gap: 2px;
 	width: 100%;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 `;
 
 const H1 = styled.h1`

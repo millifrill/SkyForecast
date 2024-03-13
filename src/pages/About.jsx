@@ -6,7 +6,6 @@ export default function About() {
 	const { theme } = useContext(ThemeContext);
 
 	return (
-		// <Container1 theme={theme}>
 		<Container theme={theme}>
 			<H1 theme={theme}>About</H1>
 			<Div>
@@ -16,31 +15,18 @@ export default function About() {
 				</P>
 			</Div>
 		</Container>
-		// </Container1>
 	);
 }
-
-// const Container1 = styled.div`
-// 	display: flex;
-// 	flex-direction: column;
-// 	align-items: center;
-// 	width: 100vh;
-// 	height: 100vh;
-// 	background-color: ${(props) => props.theme.backgroundColor};
-// `;
 
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	min-width: 300px;
-	max-width: 600px;
-	margin: 60px auto 30px;
+	max-width: 500px;
+	margin: 50px auto 30px;
 	border-radius: 8px;
-	padding: 20px 20px 50px 20px;
+	padding: 20px;
 	background-color: ${(props) => props.theme.backgroundColor};
-	@media (min-width: 380px) {
-		padding: 40px 40px 60px 40px;
-	}
 `;
 
 const H1 = styled.h1`
@@ -57,6 +43,7 @@ const Div = styled.div`
 
 const P = styled.p`
 	font-size: 1.1rem;
+	line-height: 1.5;
 	font-weight: 400;
 	text-align: left;
 	margin: auto;
