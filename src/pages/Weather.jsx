@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import SearchBox from './../components/SearchBox';
 import SearchButton from './../components/SearchButton';
+import { ThemeContext } from '../context/ThemeContext';
 
 export default function Weather({
 	search,
@@ -16,6 +17,8 @@ export default function Weather({
 	temp,
 	wind,
 }) {
+	const { theme } = useContext(ThemeContext);
+
 	return (
 		<Container>
 			<SearchContainer>
@@ -23,15 +26,15 @@ export default function Weather({
 				<SearchButton search={search} searchPressed={searchPressed} />
 			</SearchContainer>
 			{fetchDone ? (
-				<>
-					<H1>{city}</H1>
+				<WeatherdataContainer theme={theme}>
+					<H1 theme={theme}>{city}</H1>
 					<Icon src={iconUrl} alt='Weather Icon' />
-					<Span>{sky}</Span>
-					<Span>{temp} °C</Span>
-					<Span>{wind} m/s</Span>
-				</>
+					<P theme={theme}>{sky}</P>
+					<P theme={theme}>{temp} °C</P>
+					<P theme={theme}>{wind} m/s</P>
+				</WeatherdataContainer>
 			) : (
-				<WelcomeText>
+				<WelcomeText theme={theme}>
 					{error || 'Please search for a location to display weather information.'}
 				</WelcomeText>
 			)}
@@ -39,40 +42,54 @@ export default function Weather({
 	);
 }
 
+const WeatherdataContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 600px;
+	padding: 0px 80px 40px 80px;
+	border-radius: 8px;
+	background-color: ${(props) => props.theme.backgroundColor};
+`;
+
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	max-width: 600px;
-	margin: 60px auto;
-	gap: 20px;
+	margin: 70px auto 30px;
+	background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const SearchContainer = styled.div`
 	display: flex;
 	flex-direction: row;
-	align-items: flex-start;
-	gap: 10px;
+	gap: 5px;
 	width: 100%;
+	margin-bottom: 5px;
 `;
 
 const H1 = styled.h1`
 	font-size: 2rem;
 	font-weight: bold;
+	margin-bottom: 5px;
+	color: ${(props) => props.theme.color};
 `;
 
 const Icon = styled.img`
-	margin: auto;
 	width: 100px;
 	height: 100px;
 `;
 
-const Span = styled.span`
+const P = styled.p`
 	font-size: 1.6rem;
-	font-weight: 300;
+	font-weight: 400;
+	margin-bottom: 15px;
+	color: ${(props) => props.theme.color};
 `;
 
 const WelcomeText = styled.p`
 	font-size: 1.4rem;
 	font-weight: 400;
+	color: ${(props) => props.theme.color};
 `;

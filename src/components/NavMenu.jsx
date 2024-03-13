@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Hamburger from './Hamburger';
+import { ThemeContext } from '../context/ThemeContext';
 
 export default function NavMenu() {
 	const [menuOpen, setMenuOpen] = useState(false);
+	const { theme } = useContext(ThemeContext);
 
 	const toggleMenu = () => {
 		setMenuOpen(!menuOpen);
@@ -19,14 +21,14 @@ export default function NavMenu() {
 			<HamburgerWrapper>
 				<Hamburger toggle={toggleMenu} />
 			</HamburgerWrapper>
-			<NavMenuContainer open={menuOpen}>
+			<NavMenuContainer open={menuOpen} theme={theme}>
 				<NavItem>
-					<NavLink to='/' onClick={closeMenu}>
+					<NavLink to='/' onClick={closeMenu} theme={theme}>
 						Weather
 					</NavLink>
 				</NavItem>
 				<NavItem>
-					<NavLink to='/about' onClick={closeMenu}>
+					<NavLink to='/about' onClick={closeMenu} theme={theme}>
 						About
 					</NavLink>
 				</NavItem>
@@ -49,12 +51,14 @@ const NavMenuContainer = styled.nav`
 		transform 0.3s ease-in-out;
 	transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
 	position: absolute;
-	top: 60px;
+	top: 62px;
 	left: 0;
 	width: 200px;
 	height: 100vh;
 	padding: 20px;
-	background-color: #181818; //242424
+	border-top: 1px solid black;
+	border-right: 1px solid black;
+	background-color: ${(props) => props.theme.backgroundColor};
 	z-index: 1;
 `;
 
@@ -65,7 +69,7 @@ const NavItem = styled.div`
 
 const NavLink = styled(Link)`
 	text-decoration: none;
-	color: white;
+	color: ${(props) => props.theme.color};
 	cursor: pointer;
 	font-size: 1.2rem;
 	margin-top: 50px;

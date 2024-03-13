@@ -19,39 +19,57 @@ export default function App() {
 	const inputRef = useRef();
 
 	const searchPressed = () => {
-		fetch(`${api.base}weather?q=${search}&appid=${api.key}&units=metric`)
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error('Location not found. Please check the spelling and try again.');
-				}
-				return response.json();
-			})
-			.then((data) => {
-				console.log(data); // GLÖM INTE ATT TA BORT
-				setWeather(data);
-				setFetchDone(true);
-				inputRef.current.focus();
-				localStorage.setItem('WEATHER_DATA', JSON.stringify(data));
-			})
-			.catch((error) => {
-				setFetchDone(false);
-				setError(error.message);
-			});
+		try {
+			if (search.trim() === '') {
+				console.log('Empty search query.'); // KOM IHÅG ATT TA BORT!!!
+				throw new Error('Please enter a location for weather information.');
+			}
+
+			fetch(`${api.base}weather?q=${search}&appid=${api.key}&units=metric`)
+				.then((response) => {
+					if (!response.ok) {
+						throw new Error('Location not found. Please check the spelling and try again.');
+					}
+					return response.json();
+				})
+				.then((data) => {
+					console.log(data); // KOM IHÅG ATT TA BORT!!!
+					setWeather(data);
+					setFetchDone(true);
+					inputRef.current.focus();
+					localStorage.setItem('WEATHER_DATA', JSON.stringify(data));
+				})
+				.catch((error) => {
+					setFetchDone(false);
+					setError(error.message);
+				});
+		} catch (error) {
+			console.error('An error occurred during the fetch:', error);
+		}
 	};
 
 	useEffect(() => {
-		const savedWeatherData = localStorage.getItem('WEATHER_DATA');
-		if (savedWeatherData) {
-			setWeather(JSON.parse(savedWeatherData));
-			setFetchDone(true);
+		try {
+			const savedWeatherData = localStorage.getItem('WEATHER_DATA');
+			if (savedWeatherData) {
+				setWeather(JSON.parse(savedWeatherData));
+				setFetchDone(true);
+			}
+		} catch (error) {
+			console.error('Error in useEffect:', error);
 		}
 	}, []);
 
-	const iconUrl = `${api.iconBase}${weather.weather && weather.weather[0].icon}@2x.png`;
+	// const iconUrl = `${api.iconBase}${weather.weather && weather.weather[0].icon}@2x.png`;
+	// const city = weather.name;
+	// const sky = weather.weather && weather.weather[0].main;
+	// const temp = weather.main && weather.main.temp.toFixed(1);
+	// const wind = weather.wind && weather.wind.speed;
+	const iconUrl = `${api.iconBase}${weather.weather?.[0]?.icon}@2x.png`;
 	const city = weather.name;
-	const sky = weather.weather && weather.weather[0].main;
-	const temp = weather.main && weather.main.temp.toFixed(1);
-	const wind = weather.wind && weather.wind.speed;
+	const sky = weather.weather?.[0]?.main;
+	const temp = weather.main?.temp.toFixed(1);
+	const wind = weather.wind?.speed;
 
 	return (
 		<>

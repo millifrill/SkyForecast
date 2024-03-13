@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import NavMenu from './NavMenu';
 import Switch from './Switch';
+import { ThemeContext } from '../context/ThemeContext';
 
 export default function Header() {
+	const { theme } = useContext(ThemeContext);
+
 	return (
-		<HeaderContainer>
+		<HeaderContainer theme={theme}>
 			<Div>
 				<NavMenu />
-				<H1>SkyForecast</H1>
+				<H1 theme={theme}>SkyForecast</H1>
 			</Div>
 			<Div>
 				<Switch />
@@ -27,7 +30,8 @@ const HeaderContainer = styled.div`
 	left: 0;
 	right: 0;
 	padding: 10px;
-	background-color: #181818;
+	border-bottom: 1px solid black;
+	background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const Div = styled.div`
@@ -40,5 +44,5 @@ const H1 = styled.h1`
 	margin-left: 10px;
 	line-height: 10px;
 	padding: 0;
-	color: white;
+	color: ${(props) => props.theme.color};
 `;

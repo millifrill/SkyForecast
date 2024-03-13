@@ -12,13 +12,10 @@ export default function Hamburger({ toggle }) {
 
 const HamburgerMenuBtn = styled.button`
 	background-color: #2369eb;
-	align-self: center;
-	padding: 4px 5px 0px 5px;
+	padding: 4px 6px 0px 6px;
 	margin-top: 2px;
 	font-size: 1.5rem;
-
 	outline: none;
-
 	&:focus {
 		outline: none;
 	}

@@ -12,11 +12,8 @@ export default function SearchButton({ searchPressed }) {
 
 const SearchBtn = styled.button`
 	background-color: #2369eb;
-	align-self: center;
-	padding: 4px 5px 0px 5px;
-	font-size: 1.5rem;
-	outline: none;
-
+	padding: 5px 6px 0px 6px;
+	font-size: 1.6rem;
 	&:focus {
 		outline: none;
 	}
