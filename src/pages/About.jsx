@@ -16,7 +16,7 @@ export default function About() {
 				</P>
 			</Div>
 		</Container>
-		/* </Container1> */
+		// </Container1>
 	);
 }
 
@@ -32,11 +32,15 @@ export default function About() {
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
+	min-width: 300px;
 	max-width: 600px;
 	margin: 60px auto 30px;
 	border-radius: 8px;
-	padding: 40px 40px 60px 40px;
+	padding: 20px 20px 50px 20px;
 	background-color: ${(props) => props.theme.backgroundColor};
+	@media (min-width: 380px) {
+		padding: 40px 40px 60px 40px;
+	}
 `;
 
 const H1 = styled.h1`

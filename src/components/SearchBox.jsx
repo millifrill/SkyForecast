@@ -32,8 +32,8 @@ const StyledSearchBox = styled.input`
 	height: 36px;
 	width: 100%;
 	border-color: #2369eb;
+	border-radius: 8px;
 	color: grey;
 	/* color: ${(props) => props.theme.backgroundColor}; */
-	border-radius: 8px;
 	background-color: ${(props) => props.theme.backgroundColor};
 `;

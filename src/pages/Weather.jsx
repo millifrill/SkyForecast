@@ -59,8 +59,9 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	min-width: 350px;
 	max-width: 600px;
-	margin: 70px auto 30px;
+	margin: 60px auto 30px;
 	background-color: ${(props) => props.theme.backgroundColor};
 `;
 
@@ -68,8 +69,10 @@ const WeatherdataContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	min-width: 350px;
 	max-width: 600px;
-	padding: 0px 80px 40px 80px;
+	padding-bottom: 10px;
+	/* padding: 0px 80px 40px 80px; */
 	border-radius: 8px;
 	background-color: ${(props) => props.theme.backgroundColor};
 `;
