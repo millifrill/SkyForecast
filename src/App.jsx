@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import GlobalStyle from './GlobalStyle';
 import Weather from './pages/Weather';
 import About from './pages/About';
 import Header from './components/Header';
@@ -72,32 +71,29 @@ export default function App() {
 	const wind = weather.wind?.speed;
 
 	return (
-		<>
-			<GlobalStyle />
-			<Router>
-				<Header />
-				<Routes>
-					<Route
-						path='/'
-						element={
-							<Weather
-								setSearch={setSearch}
-								search={search}
-								searchPressed={searchPressed}
-								inputRef={inputRef}
-								fetchDone={fetchDone}
-								error={error}
-								iconUrl={iconUrl}
-								city={city}
-								sky={sky}
-								temp={temp}
-								wind={wind}
-							/>
-						}
-					/>
-					<Route path='/about' element={<About />} />
-				</Routes>
-			</Router>
-		</>
+		<Router>
+			<Header />
+			<Routes>
+				<Route
+					path='/'
+					element={
+						<Weather
+							setSearch={setSearch}
+							search={search}
+							searchPressed={searchPressed}
+							inputRef={inputRef}
+							fetchDone={fetchDone}
+							error={error}
+							iconUrl={iconUrl}
+							city={city}
+							sky={sky}
+							temp={temp}
+							wind={wind}
+						/>
+					}
+				/>
+				<Route path='/about' element={<About />} />
+			</Routes>
+		</Router>
 	);
 }
