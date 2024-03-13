@@ -43,8 +43,6 @@ const Div = styled.div`
 
 const P = styled.p`
 	font-size: 1.1rem;
-	line-height: 1.5;
-	font-weight: 400;
 	text-align: left;
 	margin: auto;
 	padding: 0 10px;

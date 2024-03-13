@@ -53,7 +53,6 @@ const SwitchSlider = styled.span`
 	transition: 0.2s;
 	background: #2369eb;
 	color: white;
-
 	${SwitchInput}:checked + & {
 		left: calc(100% - 1px);
 		transform: translateX(-100%);

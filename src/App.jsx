@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Weather from './pages/Weather';
 import About from './pages/About';
@@ -17,7 +17,7 @@ export default function App() {
 	const [error, setError] = useState(null);
 	const inputRef = useRef();
 
-	const searchPressed = () => {
+	const searchPressed = useCallback(() => {
 		try {
 			if (search.trim() === '') {
 				console.log('Empty search query.'); // KOM IHÅG ATT TA BORT!!!
@@ -45,7 +45,7 @@ export default function App() {
 		} catch (error) {
 			console.error('An error occurred during the fetch:', error);
 		}
-	};
+	}, [search]);
 
 	useEffect(() => {
 		try {
