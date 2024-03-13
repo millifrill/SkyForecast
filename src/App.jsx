@@ -20,10 +20,8 @@ export default function App() {
 	const searchPressed = useCallback(() => {
 		try {
 			if (search.trim() === '') {
-				console.log('Empty search query.'); // KOM IHÅG ATT TA BORT!!!
 				throw new Error('Please enter a location for weather information.');
 			}
-
 			fetch(`${api.base}weather?q=${search}&appid=${api.key}&units=metric`)
 				.then((response) => {
 					if (!response.ok) {
@@ -32,7 +30,6 @@ export default function App() {
 					return response.json();
 				})
 				.then((data) => {
-					console.log(data); // KOM IHÅG ATT TA BORT!!!
 					setWeather(data);
 					setFetchDone(true);
 					inputRef.current.focus();
@@ -59,11 +56,6 @@ export default function App() {
 		}
 	}, []);
 
-	// const iconUrl = `${api.iconBase}${weather.weather && weather.weather[0].icon}@2x.png`;
-	// const city = weather.name;
-	// const sky = weather.weather && weather.weather[0].main;
-	// const temp = weather.main && weather.main.temp.toFixed(1);
-	// const wind = weather.wind && weather.wind.speed;
 	const iconUrl = `${api.iconBase}${weather.weather?.[0]?.icon}@2x.png`;
 	const city = weather.name;
 	const sky = weather.weather?.[0]?.main;
