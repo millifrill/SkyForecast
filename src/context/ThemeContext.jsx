@@ -27,6 +27,12 @@ export const ThemeProvider = ({ children }) => {
 
 	return (
 		<ThemeContext.Provider value={{ theme, isDark, toggleTheme }}>
+			<style>
+				{`:root {
+          --background-color: ${theme.backgroundColor};
+          --text-color: ${theme.color};
+        }`}
+			</style>
 			{children}
 		</ThemeContext.Provider>
 	);
