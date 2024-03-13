@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useMemo, useState } from 'react';
 
 const themes = {
 	dark: {
@@ -21,12 +21,17 @@ export const ThemeProvider = ({ children }) => {
 		setIsDark((prevIsDark) => !prevIsDark);
 	};
 
+	const contextValue = useMemo(
+		() => ({ theme, isDark, toggleTheme }),
+		[theme, isDark, toggleTheme],
+	);
+
 	useEffect(() => {
 		setTheme(isDark ? themes.dark : themes.light);
 	}, [isDark]);
 
 	return (
-		<ThemeContext.Provider value={{ theme, isDark, toggleTheme }}>
+		<ThemeContext.Provider value={contextValue}>
 			<style>
 				{`:root {
           --background-color: ${theme.backgroundColor};
