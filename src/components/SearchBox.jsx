@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { ThemeContext } from '../context/ThemeContext';
 
 export default function SearchBox({ setSearch, inputRef }) {
+	const { theme } = useContext(ThemeContext);
+
 	const handleKeyUp = (event) => {
 		if (event.key === 'Enter') {
 			event.preventDefault();
@@ -11,6 +14,7 @@ export default function SearchBox({ setSearch, inputRef }) {
 
 	return (
 		<StyledSearchBox
+			theme={theme}
 			type='text'
 			placeholder='Enter city/town...'
 			onChange={(e) => setSearch(e.target.value)}
@@ -28,5 +32,8 @@ const StyledSearchBox = styled.input`
 	height: 36px;
 	width: 100%;
 	border-color: #2369eb;
+	color: grey;
+	/* color: ${(props) => props.theme.backgroundColor}; */
 	border-radius: 8px;
+	background-color: ${(props) => props.theme.backgroundColor};
 `;

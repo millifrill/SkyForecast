@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+// import { useContext } from 'react';
+// import { ThemeContext } from '../context/ThemeContext';
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -45,3 +47,11 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default GlobalStyle;
+
+// const ThemedGlobalStyle = () => {
+// 	const { theme } = useContext(ThemeContext);
+
+// 	return <GlobalStyle theme={theme} />;
+// };
+
+// export default ThemedGlobalStyle;

@@ -25,7 +25,7 @@ export default function About() {
 // 	flex-direction: column;
 // 	align-items: center;
 // 	width: 100vh;
-// 	height: 100%;
+// 	height: 100vh;
 // 	background-color: ${(props) => props.theme.backgroundColor};
 // `;
 
@@ -53,7 +53,7 @@ const Div = styled.div`
 
 const P = styled.p`
 	font-size: 1.1rem;
-	font-weight: 300;
+	font-weight: 400;
 	text-align: left;
 	margin: auto;
 	padding: 0 10px;

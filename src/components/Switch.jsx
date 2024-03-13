@@ -9,14 +9,12 @@ export default function Switch() {
 		toggleTheme();
 	};
 	return (
-		<>
-			<SwitchLabel>
-				<SwitchInput type='checkbox' onClick={handleToggle} />
-				<SwitchSlider isdark={isDark ? 'true' : 'false'}>
-					{isDark ? <MdOutlineDarkMode /> : <MdOutlineLightMode />}{' '}
-				</SwitchSlider>
-			</SwitchLabel>
-		</>
+		<SwitchLabel>
+			<SwitchInput type='checkbox' onClick={handleToggle} />
+			<SwitchSlider isdark={isDark ? 'true' : 'false'}>
+				{isDark ? <MdOutlineDarkMode /> : <MdOutlineLightMode />}{' '}
+			</SwitchSlider>
+		</SwitchLabel>
 	);
 }
 
@@ -27,7 +25,7 @@ const SwitchLabel = styled.label`
 	justify-content: space-between;
 	position: relative;
 	width: 60px;
-	height: 38px;
+	height: 39.5px;
 	margin-right: 5px;
 	border-radius: 8px;
 	border: 2px solid #2369eb;
@@ -44,9 +42,9 @@ const SwitchInput = styled.input`
 const SwitchSlider = styled.span`
 	position: absolute;
 	top: 2px;
-	left: 2px;
-	width: 35px;
-	height: 35px;
+	left: 1px;
+	width: 36px;
+	height: 36px;
 	font-size: 1.6rem;
 	text-align: center;
 	align-items: center;
@@ -55,10 +53,7 @@ const SwitchSlider = styled.span`
 	transition: 0.2s;
 	background: #2369eb;
 	${SwitchInput}:checked + & {
-		left: calc(100% - 2px);
+		left: calc(100% - 1px);
 		transform: translateX(-100%);
-	}
-	${SwitchLabel}:active & {
-		width: 45px;
 	}
 `;

@@ -20,6 +20,7 @@ export default function Weather({
 	const { theme } = useContext(ThemeContext);
 
 	return (
+		// <Container1 theme={theme}>
 		<Container>
 			<SearchContainer>
 				<SearchBox setSearch={setSearch} inputRef={inputRef} />
@@ -34,13 +35,34 @@ export default function Weather({
 					<P theme={theme}>{wind} m/s</P>
 				</WeatherdataContainer>
 			) : (
-				<WelcomeText theme={theme}>
-					{error || 'Please search for a location to display weather information.'}
-				</WelcomeText>
+				<WelcomeOrErrorContainer theme={theme}>
+					<WelcomeOrErrorText theme={theme}>
+						{error || 'Please search for a location to display weather information.'}
+					</WelcomeOrErrorText>
+				</WelcomeOrErrorContainer>
 			)}
 		</Container>
+		// </Container1>
 	);
 }
+
+// const Container1 = styled.div`
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+// 	width: 100vh;
+// 	height: 100vh;
+// 	background-color: ${(props) => props.theme.backgroundColor};
+// `;
+
+const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 600px;
+	margin: 70px auto 30px;
+	background-color: ${(props) => props.theme.backgroundColor};
+`;
 
 const WeatherdataContainer = styled.div`
 	display: flex;
@@ -49,15 +71,6 @@ const WeatherdataContainer = styled.div`
 	max-width: 600px;
 	padding: 0px 80px 40px 80px;
 	border-radius: 8px;
-	background-color: ${(props) => props.theme.backgroundColor};
-`;
-
-const Container = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	max-width: 600px;
-	margin: 70px auto 30px;
 	background-color: ${(props) => props.theme.backgroundColor};
 `;
 
@@ -88,8 +101,17 @@ const P = styled.p`
 	color: ${(props) => props.theme.color};
 `;
 
-const WelcomeText = styled.p`
+const WelcomeOrErrorText = styled.p`
 	font-size: 1.4rem;
 	font-weight: 400;
 	color: ${(props) => props.theme.color};
+`;
+const WelcomeOrErrorContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 600px;
+	padding: 0px 80px 10px 80px;
+	border-radius: 8px;
+	background-color: ${(props) => props.theme.backgroundColor};
 `;

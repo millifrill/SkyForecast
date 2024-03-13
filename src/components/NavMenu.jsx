@@ -72,6 +72,7 @@ const NavLink = styled(Link)`
 	color: ${(props) => props.theme.color};
 	cursor: pointer;
 	font-size: 1.2rem;
+	font-weight: 500;
 	margin-top: 50px;
 
 	&:hover {
