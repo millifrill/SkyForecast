@@ -38,6 +38,7 @@ export default function App() {
 				.catch((error) => {
 					setFetchDone(false);
 					setError(error.message);
+					console.error('An error occurred during the fetch:', error);
 				});
 		} catch (error) {
 			console.error('An error occurred during the fetch:', error);

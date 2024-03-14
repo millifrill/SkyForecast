@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useMemo, useReducer } from 'react';
 
 const themes = {
 	dark: {
@@ -13,12 +13,28 @@ const themes = {
 
 export const ThemeContext = createContext(null);
 
+const themeReducer = (state, action) => {
+	if (action.type === 'TOGGLE_THEME') {
+		return {
+			...state,
+			isDark: !state.isDark,
+			theme: state.isDark ? themes.light : themes.dark,
+		};
+	} else {
+		return state;
+	}
+};
+
 export const ThemeProvider = ({ children }) => {
-	const [isDark, setIsDark] = useState(false);
-	const [theme, setTheme] = useState(themes.light);
+	const [state, dispatch] = useReducer(themeReducer, {
+		isDark: false,
+		theme: themes.light,
+	});
+
+	const { theme, isDark } = state;
 
 	const toggleTheme = () => {
-		setIsDark((prevIsDark) => !prevIsDark);
+		dispatch({ type: 'TOGGLE_THEME' });
 	};
 
 	const contextValue = useMemo(
@@ -26,17 +42,13 @@ export const ThemeProvider = ({ children }) => {
 		[theme, isDark, toggleTheme],
 	);
 
-	useEffect(() => {
-		setTheme(isDark ? themes.dark : themes.light);
-	}, [isDark]);
-
 	return (
 		<ThemeContext.Provider value={contextValue}>
 			<style>
 				{`:root {
-          --background-color: ${theme.backgroundColor};
-          --text-color: ${theme.color};
-        }`}
+            --background-color: ${theme.backgroundColor};
+            --text-color: ${theme.color};
+          }`}
 			</style>
 			{children}
 		</ThemeContext.Provider>
